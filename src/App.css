@@ -150,16 +150,42 @@ input[type="number"] {
   height: 0;
 }
 
-@media only screen and (min-width: 992px) {
-  .data-vis-wrapper {
-    flex-direction: row;
-  }
-  .data-vis-wrapper .recharts-responsive-container {
-    flex-basis: 50%;
-    max-width: 50%;
-    min-width: auto;
-    margin: 0 auto;
-  }
+nav {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100vw;
+	height: 5vh;
+	background-color: #3d314a;
+	z-index: 100;
+}
+
+.navigation-list {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+	width: 60%;
+}
+
+.navigation-list li {
+	list-style: none;
+	cursor: pointer;
+	padding: 8px;
+	font-size: 1.25rem;
+	color: white;
+}
+
+@media screen and (min-width: 992px) {
+	.navigation-list {
+		width: 50%;
+	}
+	.eventList {
+		grid-template-columns: 1fr 1fr;
+	}
+	.data-vis-wrapper {
+		flex-direction: row;
+	}
 }
 
 
