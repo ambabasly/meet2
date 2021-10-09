@@ -1,19 +1,18 @@
-
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
-import App from '../App';
-import { mockData } from '../mock-data';
 import { mount } from 'enzyme';
+import App from '../App';
 import Event from '../Event';
 import EventList from '../EventList';
-
+import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, test => {
-
+    // eslint-disable-next-line
     let EventlistWrapper;
     let EventWrapper;
+    // eslint-disable-next-line
     let AppWrapper;
     test('An event element is collapsed by default', ({ given, when, then }) => {
         given('the user is on the main page.', () => {
@@ -64,4 +63,3 @@ defineFeature(feature, test => {
         });
     });
 });
-
