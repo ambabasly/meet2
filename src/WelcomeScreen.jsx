@@ -1,0 +1,28 @@
+import React from "react";
+import './WelcomeScreen.css';
+import logo from './img/meet-app-192.png';
+
+function WelcomeScreen(props) {
+    return props.showWelcomeScreen ?
+        (
+            <div className="WelcomeScreen">
+                <img src={logo} alt='logo' className="image" />
+                <h1>Welcome to the Meet app "LinkUp"</h1>
+                <h4>Log in to see upcoming events around the world for full-stack developers</h4>
+                    <div className="button_cont" align="center">
+                        <div class="google-btn">
+                            <div class="google-icon-wrapper">
+                                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Google_logo_%282013-2015%29.svg" alt="Google sign-in" />
+                            </div>
+                            <button onClick={() => { props.getAccessToken() }} rel="nofollow noopener" class="btn-text">
+                                <b>Sign in with google</b>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="https://ambabasly.github.io/meet2/privacy.html" rel="nofollow noopener">Privacy policy</a>
+            </div>
+            
+        )
+    : null
+}
+export default WelcomeScreen;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 import './nprogress.css';
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
     const result = await fetch(
       `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
     )
@@ -68,6 +68,12 @@ export const getAccessToken = async () => {
     if (window.location.href.startsWith("http://localhost")) {
       NProgress.done();
       return mockData;
+    }
+
+    if (!navigator.onLine) {
+      const data = localStorage.getItem("lastEvents");
+      NProgress.done();
+      return data?JSON.parse(data).events:[];;
     }
    
     const token = await getAccessToken();
