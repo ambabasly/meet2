@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 2% 5%;
+  padding: 3% 3%;
 }
 
 .App * {
@@ -76,7 +76,7 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
-.event {
+.eventCard {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
@@ -85,7 +85,7 @@ input[type="number"] {
   position: relative;
 }
 
-.details-btn {
+.btn-ShowDetails, .btn-HideDetails {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -128,6 +128,15 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
+.errorAlert, .infoAlert {
+  position: fixed;
+  top: 20px;
+  margin: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+}
+
 .data-vis-wrapper {
   display: flex;
   align-items: center;
@@ -141,53 +150,14 @@ input[type="number"] {
   overflow: visible;
 }
 
-.Alert, .errorAlert {
-  position: fixed;
-  top: 28px;
-  margin: 0;
-  left: 0;
-  right: 0;
-  height: 0;
+@media only screen and (min-width: 992px) {
+  .data-vis-wrapper {
+    flex-direction: row;
+  }
+  .data-vis-wrapper .recharts-responsive-container {
+    flex-basis: 50%;
+    max-width: 50%;
+    min-width: auto;
+    margin: 0 auto;
+  }
 }
-
-nav {
-	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	width: 100vw;
-	height: 5vh;
-	background-color: #3d314a;
-	z-index: 100;
-}
-
-.navigation-list {
-	position: relative;
-	display: flex;
-	justify-content: flex-start;
-	width: 60%;
-}
-
-.navigation-list li {
-	list-style: none;
-	cursor: pointer;
-	padding: 8px;
-	font-size: 1.25rem;
-	color: white;
-}
-
-@media screen and (min-width: 992px) {
-	.navigation-list {
-		width: 50%;
-	}
-	.eventList {
-		grid-template-columns: 1fr 1fr;
-	}
-	.data-vis-wrapper {
-		flex-direction: row;
-	}
-}
-
-
-
-
