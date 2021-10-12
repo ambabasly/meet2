@@ -46,7 +46,7 @@ class App extends Component {
     } else {
       console.log('offline');
       this.setState({
-        warningText: 'You are currently offline',
+        warningText: '',
       });
     }
   }
