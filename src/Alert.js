@@ -26,20 +26,41 @@ class InfoAlert extends Alert {
         super(props);
         this.color = 'blue';
     }
+    getStyle = () => {
+        return {
+          color: this.color,
+          background: '#fff',
+        };
+    }
 }
 
 class ErrorAlert extends Alert {
     constructor(props) {
-        super(props);
-        this.color = 'red';
+      super(props);
+      this.color = 'red';
+    }
+    getStyle = () => {
+        return {
+          color: this.color,
+          backgroundColor: 'white',
+        };
     }
 }
 
-class WarningAlert extends Alert {
+  class WarningAlert extends Alert {
     constructor(props) {
-        super(props);
-        this.color = 'red';
+      super(props);
+      this.color = '#f8a01f';
+    }
+    getStyle = () => {
+        return {
+          color: this.color,
+          background: 'white',
+        };
     }
 }
+
+
+
 
 export { InfoAlert, ErrorAlert, WarningAlert };

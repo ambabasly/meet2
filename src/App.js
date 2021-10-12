@@ -3,9 +3,10 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
-// eslint-disable-next-line
 import { WarningAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
+import EventGenre from './EventGenre';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './App.css';
 import './nprogress.css';
 
@@ -21,7 +22,7 @@ class App extends Component {
     showWelcomeScreen: undefined
   }
 
-  componentDidMount() {
+   componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (checkToken(accessToken)).error ? false : true;
@@ -40,10 +41,10 @@ class App extends Component {
     if(!navigator.onLine) {
       console.log('online');
       this.setState({
-        warningText: 'No connection.',
+        warningText: 'Warning: the events you are viewing may no longer be current. To ensure you see the latest information, make sure you are connected to the internet'
       });
     } else {
-      console.log('warning');
+      console.log('offline');
       this.setState({
         warningText: 'You are currently offline',
       });
@@ -76,27 +77,47 @@ class App extends Component {
     this.updateEvents(currentLocation, eventCount);
   }
 
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location)=>{
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return {city, number};
+    })
+    return data;
+  };
+
   render() {
     if (this.state.showWelcomeScreen === undefined)
     return <div className='App' /> 
-    const { locations, events, numberOfEvents } = this.state;
+    const { locations,  numberOfEvents } = this.state;
     
     return (
       <div className="App">
-        <warningAlert text={this.state.warningText} />
-        <CitySearch 
-          locations={locations} 
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents  
-          numberOfEvents={numberOfEvents} 
-          updateEventCount={this.updateEventCount}
-        />
-        <EventList 
-          events={events}
-        />
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => {
-          getAccessToken() }} />
+        <h1>Meet App</h1>
+        <h4>Choose your nearest city</h4>
+        <WarningAlert text={this.state.warningText} />
+        <CitySearch locations={locations} updateEvents={this.updateEvents}/>
+        <NumberOfEvents numberOfEvents={numberOfEvents} 
+          updateEventCount={this.updateEventCount}/>
+        <div className="data-vis-wrapper">
+        <EventGenre events={this.state.events} />
+        <ResponsiveContainer height={400} >
+        <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+          <CartesianGrid />
+          <XAxis type="category" dataKey="city" name="city" 
+          label={{ value: 'city', position: 'insideBottomCenter', dy: 20 }}/>
+          <YAxis allowDecimals={false} 
+          type="number" dataKey="number" name="number of events" 
+          label={{ value: 'number of events', angle: -90, position: 'insideLeft' }}/>
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
+        </ResponsiveContainer>
+        </div>
+        <EventList events={this.state.events}/>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} 
+          getAccessToken={() => {getAccessToken() }} />
       </div>
     );
   }
