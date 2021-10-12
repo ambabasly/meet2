@@ -3,8 +3,8 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Archivo Narrow', sans-serif;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("../src/background2.jpg"); 
-  background-color: currentColor
+  background-image: url("../src/background5.jpg"); 
+  background-color: #FFFDD0
 }
 
 code {
