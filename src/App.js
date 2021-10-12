@@ -11,7 +11,6 @@ import './App.css';
 import './nprogress.css';
 
 
-
 class App extends Component {
   state = {
     events: [],
@@ -39,12 +38,10 @@ class App extends Component {
       }
     });
     if(!navigator.onLine) {
-      console.log('online');
       this.setState({
         warningText: 'Warning: the events you are viewing may no longer be current. To ensure you see the latest information, make sure you are connected to the internet'
-      });
+      }); 
     } else {
-      console.log('offline');
       this.setState({
         warningText: '',
       });
@@ -95,7 +92,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Meet App</h1>
-        <h4>Choose your nearest city</h4>
+        <h4>Search for Upcoming Events for Full-Stack Developers Around the World</h4>
         <WarningAlert text={this.state.warningText} />
         <CitySearch locations={locations} updateEvents={this.updateEvents}/>
         <NumberOfEvents numberOfEvents={numberOfEvents} 
