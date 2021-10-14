@@ -1,5 +1,5 @@
 # Project Name
-**meet2APP**
+**Meet-APP**
 
 ## Built With
 - React
