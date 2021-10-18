@@ -4,10 +4,6 @@
 ## Built With
 - React
 
-## https://ambabasly.github.io/meet2/
-
-- <img width="1430" alt="Screenshot 2021-10-13 at 00 02 36" src="https://user-images.githubusercontent.com/88083504/137035190-3bd2cdae-a6bf-44e4-a5e3-0fa6bb74dcc1.png">
-
 ## Getting Started
 **A serverless PWA using Create React App that can display and filter meetup events from the Google calender API. It is developed using Test-Drive-Development techniques to ensure a high test coverage rate..**
 
