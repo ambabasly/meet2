@@ -4,6 +4,8 @@
 ## Built With
 - React
 
+##<img width="1440" alt="Screenshot 2021-10-18 at 06 43 46" src="https://user-images.githubusercontent.com/88083504/137670531-a400adb2-fffe-4ae4-98d8-18c675174e19.png">
+
 ## Getting Started
 **A serverless PWA using Create React App that can display and filter meetup events from the Google calender API. It is developed using Test-Drive-Development techniques to ensure a high test coverage rate..**
 
